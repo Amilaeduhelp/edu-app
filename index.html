@@ -67,6 +67,12 @@
         
         .logo img {
             height: 60px;
+			padding-left: 15px;  /* වම් පැත්තෙන් ඉඩක් තබන්න */
+			padding-right: 15px; /* දකුණු පැත්තෙන් ඉඩක් තබන්න */
+			max-width: 95%;      /* සම්පූර්ණ පළල වෙනුවට සීමාවක් යොදන්න */
+			margin: 0 auto;      /* දෙපසින් සමාන margins සමඟ මැදට තබන්න */
+			box-sizing: border-box;
+}
         }
         
         .nav-toggle {
@@ -100,23 +106,23 @@
             color: var(--text-dark);
         }
         
-.slider {
-    width: 100%; 
-    max-width: 100%;
-    height: auto;
-    margin: 0;   
-    padding: 0;  
-    position: relative;
-    overflow: hidden;
-    border-radius: 0; 
-    box-shadow: var(--shadow);
-}
+		.slider {
+			width: 100%; 
+			max-width: 100%;
+			height: auto;
+			margin: 0;   
+			padding: 0;  
+			position: relative;
+			overflow: hidden;
+			border-radius: 0; 
+		box-shadow: var(--shadow);
+		}
 
-.slider img {
-    width: 100%;
-    display: block; 
-    object-fit: cover;
-}
+		.slider img {
+			width: 100%;
+			display: block; 
+			object-fit: cover;
+		}
         
         .slides {
             display: flex;
@@ -501,7 +507,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <a href="#">
+                <a href="www.eduhelp.lk">
                     <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Untitled-11.png" alt="EduHelp Logo">
                 </a>
             </div>

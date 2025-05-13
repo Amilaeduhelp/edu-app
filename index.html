@@ -3,293 +3,978 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduHelp - Educational Resources</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'primary-green': '#396F04',
-                        'category-green-light': '#7DBD07',
-                        'category-green-dark': '#589507'
-                    }
-                }
+    <title>EduHelp - අධ්‍යාපනික සහාය</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #81C31C;
+            --primary-dark: #669a16;
+            --primary-light: #a1e148;
+            --text-dark: #333;
+            --text-light: #f8f8f8;
+            --background-light: #f9f9f9;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            
+            /* Category Colors */
+            --new-features-color: #FF6B6B;
+            --advanced-color: #4ECDC4;
+            --university-color: #A875FF;
+            --parents-color: #FFB347;
+            --teachers-color: #3498DB;
+            --researchers-color: #FF6B81;
+            --general-color: #26C485;
+            --about-color: #45B8AC;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans Sinhala', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo img {
+            height: 60px;
+        }
+        
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            position: relative;
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--primary-light);
+            color: var(--text-dark);
+        }
+        
+        /* Slider Banner */
+        .slider {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .slide {
+            flex: 0 0 100%;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: auto;
+            max-height: 200px;
+            object-fit: cover;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 30px 0;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        
+        .link-item {
+            background-color: #f8f8f8;
+            border-left: 4px solid var(--primary-color);
+            padding: 12px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .link-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            background-color: var(--primary-light);
+        }
+        
+        .link-item a {
+            color: var(--text-dark);
+            text-decoration: none;
+            display: block;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            font-size: 0.9rem;
+        }
+        
+        /* Province Popup */
+        .province-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        
+        .popup-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .popup-content h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .provinces {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .province-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .province-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        
+        /* Hide the main content until province is selected */
+        .hidden-until-province {
+            display: none;
+        }
+        
+        /* New Features */
+        .new-features {
+            background: linear-gradient(135deg, var(--new-features-color), #e63946);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        #advanced-level .section-title {
+            color: var(--advanced-color);
+            border-bottom: 2px solid var(--advanced-color);
+        }
+        
+        #advanced-level .link-item {
+            border-left: 4px solid var(--advanced-color);
+        }
+        
+        #university .section-title {
+            color: var(--university-color);
+            border-bottom: 2px solid var(--university-color);
+        }
+        
+        #university .link-item {
+            border-left: 4px solid var(--university-color);
+        }
+        
+        #parents .section-title {
+            color: var(--parents-color);
+            border-bottom: 2px solid var(--parents-color);
+        }
+        
+        #parents .link-item {
+            border-left: 4px solid var(--parents-color);
+        }
+        
+        #teachers .section-title {
+            color: var(--teachers-color);
+            border-bottom: 2px solid var(--teachers-color);
+        }
+        
+        #teachers .link-item {
+            border-left: 4px solid var(--teachers-color);
+        }
+        
+        #researchers .section-title {
+            color: var(--researchers-color);
+            border-bottom: 2px solid var(--researchers-color);
+        }
+        
+        #researchers .link-item {
+            border-left: 4px solid var(--researchers-color);
+        }
+        
+        #general .section-title {
+            color: var(--general-color);
+            border-bottom: 2px solid var(--general-color);
+        }
+        
+        #general .link-item {
+            border-left: 4px solid var(--general-color);
+        }
+        
+        #about-us .section-title {
+            color: var(--about-color);
+            border-bottom: 2px solid var(--about-color);
+        }
+        
+        #about-us .link-item {
+            border-left: 4px solid var(--about-color);
+        }
+        
+        .new-features a {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .new-features a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 99;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        /* Hover effects for link items based on their category */
+        #advanced-level .link-item:hover {
+            background-color: rgba(78, 205, 196, 0.2);
+        }
+        
+        #university .link-item:hover {
+            background-color: rgba(168, 117, 255, 0.2);
+        }
+        
+        #parents .link-item:hover {
+            background-color: rgba(255, 179, 71, 0.2);
+        }
+        
+        #teachers .link-item:hover {
+            background-color: rgba(52, 152, 219, 0.2);
+        }
+        
+        #researchers .link-item:hover {
+            background-color: rgba(255, 107, 129, 0.2);
+        }
+        
+        #general .link-item:hover {
+            background-color: rgba(38, 196, 133, 0.2);
+        }
+        
+        #about-us .link-item:hover {
+            background-color: rgba(69, 184, 172, 0.2);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+            
+            nav {
+                position: absolute;
+                top: 90px;
+                left: 0;
+                right: 0;
+                background-color: white;
+                box-shadow: var(--shadow);
+                height: 0;
+                overflow: hidden;
+                transition: height 0.3s ease;
+                z-index: 100;
+            }
+            
+            nav.active {
+                height: auto;
+                padding-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 10px 0;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .provinces {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .section {
+                padding: 20px 15px;
+            }
+            
+            .header-container {
+                padding: 10px 0;
+            }
+            
+            .logo img {
+                height: 50px;
             }
         }
-    </script>
+        
+        @media (max-width: 480px) {
+            .section {
+                padding: 15px 10px;
+            }
+            
+            .provinces {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .popup-content {
+                padding: 20px 15px;
+            }
+            
+            .logo img {
+                height: 40px;
+            }
+        }
+    </style>
 </head>
-<body class="bg-white text-gray-800 font-sans">
-    <div class="max-w-md mx-auto">
-        <!-- Header Ad -->
-        <div class="bg-black">
-            <div class="swiper header-ads-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Appad2025_05-01.jpg" alt="Header Ad 1" class="w-full h-auto object-contain">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Appad2025_05-02.jpg" alt="Header Ad 2" class="w-full h-auto object-contain">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Appad2025_05-03.jpg" alt="Header Ad 3" class="w-full h-auto object-contain">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Appad2025_05-04.jpg" alt="Header Ad 4" class="w-full h-auto object-contain">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Appad2025_05-05.jpg" alt="Header Ad 4" class="w-full h-auto object-contain">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Appad2025_05-07.jpg" alt="Header Ad 4" class="w-full h-auto object-contain">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Appad2025_05-06.jpg" alt="Header Ad 4" class="w-full h-auto object-contain">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Appad2025_05-08.jpg" alt="Header Ad 4" class="w-full h-auto object-contain">
-                    </div>
-
-                </div>
+<body>
+    <!-- Province Selection Popup -->
+    <div class="province-popup" id="provincePopup">
+        <div class="popup-content">
+            <h2>ඔබ පදිංචි පළාත තෝරන්න</h2>
+            <div class="provinces">
+                <button class="province-btn" data-province="western">බස්නාහිර පළාත</button>
+                <button class="province-btn" data-province="southern">දකුණු පළාත</button>
+                <button class="province-btn" data-province="eastern">නැගෙනහිර පළාත</button>
+                <button class="province-btn" data-province="uva">ඌව පළාත</button>
+                <button class="province-btn" data-province="northcentral">උතුරු මැද පළාත</button>
+                <button class="province-btn" data-province="northern">උතුරු පළාත</button>
+                <button class="province-btn" data-province="sabaragamuwa">සබරගමුව පළාත</button>
+                <button class="province-btn" data-province="northwestern">වයඹ පළාත</button>
+                <button class="province-btn" data-province="central">මධ්‍යම පළාත</button>
             </div>
         </div>
-
-        <!-- Logo -->
-        <div class="flex justify-center my-4">
-            <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Untitled-11.png" alt="EduHelp Logo" class="h-16 w-auto">
-        </div>
-
-        <!-- Main Content Grid -->
-        <div class="px-4 space-y-3">
-            <!-- Category 1: New Features -->
-            <a href="https://www.eduhelp.lk/index.php/uncategorized/46153/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                නව විශේෂාංග
-            </a>
-
-            <!-- Category 2: Advanced Level Subjects -->
-            <a href="https://www.eduhelp.lk/index.php/pusthakalaya/44488/" class="block bg-category-green-dark text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                උසස් අධ්‍යාපනය උසස් පෙළ විෂයයන් තෝරාගැනීමට අත්වැලක්
-            </a>
-
-            <!-- Category 3: University Courses -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/pusthakalaya/46024/" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    විශ්වවිද්‍යාල පාඨමාලා
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/pusthakalaya/46058/" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    විවිධ විශ්වවිද්‍යාල වල ක්‍රියාත්මක උපාධි පාඨමාලා
-                </a>
-            </div>
-
-            <!-- Category 4: Educational Institutions -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/36601/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    විශ්වවිද්‍යාල හා උසස් අධ්‍යාපන ආයතන
-                </a>
-                <a href="https://nvq.gov.lk/TVET_GUIDE/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    තෘතීය හා වෘත්තීය අධ්‍යාපන අවස්ථා
-                </a>
-            </div>
-
-            <!-- Additional Links -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41801/" class="block bg-category-green-dark text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    උපාධි පාඨමාලා සඳහා අවම සුදුසුකම්
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/pusthakalaya/33038/" class="block bg-category-green-dark text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    13+ පාසල් නාමාවලිය
-                </a>
-            </div>
-
-            <!-- More Specific Links -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/40872/" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    Z-Score
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/42714/" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    ආධ්‍යාපනික පුවත්
-                </a>
-            </div>
-
-            <!-- Specialized Services -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://amilaeduhelp.github.io/Career-key/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    ඔබව මැනගන්න වෘත්තීය යතුර පරීක්ෂණය
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/pusthakalaya/45332/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    ඔබේ දරුවාගේ අධ්‍යාපන තත්ත්ව වාර්තාව
-                </a>
-            </div>
-
-            <!-- Additional Sections -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/41495/" class="block bg-category-green-dark text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    සිත්සරණී උපදේශන සේවාව
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/pusthakalaya/45543/" class="block bg-category-green-dark text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    දැනුම එකතුව Edupoints
-                </a>
-            </div>
-
-            <!-- Research and Knowledge -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://amilaeduhelp.github.io/eduhub/" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    Research hub
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41291/" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    විශ්වකෝෂය
-                </a>
-            </div>
-
-            <!-- Language and Learning Resources -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/41315/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    හරියට සිංහල
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/36643/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    වීඩියෝ පාඩම් මාලා
-                </a>
-            </div>
-
-            <!-- More Resources -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/37545/" class="block bg-category-green-dark text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    පින්තූර බැංකුව
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41488/" class="block bg-category-green-dark text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    Book store
-                </a>
-            </div>
-
-            <!-- Library and Reference -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/pusthakalaya/43473" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    පැරණි පොත් එකතුව
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/36818/" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    සිතියම් පොත
-                </a>
-            </div>
-
-            <!-- More Specialized Links -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/library/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    පුස්තකාලය
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/universal-index/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    විශ්වසුචිය
-                </a>
-            </div>
-
-            <!-- Online Resources -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/36660/" class="block bg-category-green-dark text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    අන්තර්ජාල ශබ්දකෝෂ හා විශ්වකෝෂ
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/36687/" class="block bg-category-green-dark text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    අන්තර්ජාල පුස්තකාල
-                </a>
-            </div>
-
-            <!-- Data and Documents -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41795/" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    දත්ත පොකුරු
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/36586/" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    රාජකාරී ලේඛන
-                </a>
-            </div>
-
-            <!-- Educational Materials -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41806/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    ගුරු අත්පොත්, සිලබස් හා පාසල් පෙළ පොත්
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/36615/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                  උසස් පෙළ විෂයයන් හා රැකියා අවස්ථා
-                </a>
-            </div>
-
- <!-- Job Resources Continued -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41476/" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    Job mart
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/40439/" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    edu ad දැන්වීම් සේවාව
-                </a>
-            </div>
-
-            <!-- About and Services -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/eduprivate/41818/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    අපි
-                </a>
-                <a href="https://www.eduhelp.lk/index.php/uncategorized/43123/" class="block bg-category-green-light text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    Edu graphic සේවාව
-                </a>
-            </div>
-
-            <!-- Social Media Links -->
-            <div class="grid grid-cols-2 gap-3">
-                <a href="https://www.facebook.com/profile.php?id=100082251310424" class="block bg-category-green-dark text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    අපේ මුහුණු පොත්
-                </a>
-                <a href="https://www.youtube.com/channel/UCxample" class="block bg-category-green-dark text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                    YouTube නාළිකාව
-                </a>
-            </div>
-
-            <!-- WhatsApp Channel -->
-            <a href="https://www.whatsapp.com/channel/0029Va78UVm6BIEZBPCQSJ0J" class="block bg-primary-green text-white py-3 px-4 rounded-lg text-center font-bold hover:opacity-90 transition">
-                අපේ WhatsApp නාළිකාව
-            </a>
-        </div>
-
-        <!-- Footer Ad -->
-        <div class="bg-black mt-4">
-            <div class="swiper footer-ads-swiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Appad2025_05-09.jpg" alt="Footer Ad 1" class="w-full h-20 object-cover">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Appad2025_05-10.jpg" alt="Footer Ad 2" class="w-full h-20 object-cover">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Appad2025_05-11.jpg" alt="Footer Ad 2" class="w-full h-20 object-cover">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Appad2025_05-12.jpg" alt="Footer Ad 2" class="w-full h-20 object-cover">
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Swiper JS and Initialization -->
-        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-        <script>
-            // Header Ads Swiper
-            const headerAdsSwiper = new Swiper('.header-ads-swiper', {
-                loop: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                },
-            });
-
-            // Footer Ads Swiper
-            const footerAdsSwiper = new Swiper('.footer-ads-swiper', {
-                loop: true,
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                },
-            });
-        </script>
     </div>
+
+    <!-- Header Ads -->
+    <div class="slider header-slider hidden-until-province">
+        <div class="slides" id="headerSlides">
+            <!-- Provincial ads will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="hidden-until-province">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="#">
+                    <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/Untitled-11.png" alt="EduHelp Logo">
+                </a>
+            </div>
+            <div class="nav-toggle" id="navToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#new-features">නව විශේෂාංග</a></li>
+                    <li><a href="#advanced-level">උසස් පෙළට</a></li>
+                    <li><a href="#university">විශ්වවිද්‍යාලයට</a></li>
+                    <li><a href="#parents">දෙමාපියන්ට</a></li>
+                    <li><a href="#teachers">ගුරුවරුන්ට</a></li>
+                    <li><a href="#researchers">ගවේෂකයින්ට</a></li>
+                    <li><a href="#general">සැමට</a></li>
+                    <li><a href="#about-us">අපේ කතා</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container main-content hidden-until-province">
+        <!-- New Features -->
+        <div class="new-features" id="new-features">
+            <h2>නව විශේෂාංග</h2>
+            <p>අපගේ නවතම සේවාවන් සහ විශේෂාංග සොයා බලන්න</p>
+            <a href="https://www.eduhelp.lk/index.php/uncategorized/46153/" target="_blank">
+                නව විශේෂාංග බලන්න &rarr;
+            </a>
+        </div>
+
+        <!-- Advanced Level Section -->
+        <section class="section" id="advanced-level">
+            <h2 class="section-title">උසස් පෙළට</h2>
+            <div class="links-grid">
+                <div class="link-item">
+                    <a href="https://amilaeduhelp.github.io/Career-key/" target="_blank">ඔබව මැනගන්න වෘත්තීය යතුර පරීක්ෂණය</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/44488/" target="_blank">උසස් අධ්‍යාපනය උසස් පෙළ විෂයයන් තෝරාගැනීමට අත්වැලක්</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/33038/" target="_blank">13+පාසල් නාමාවලිය</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/40872/" target="_blank">Z-Score</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36615/" target="_blank">රැකියා අවස්ථා උසස් පෙළ විෂයයන් හා රැකියා අවස්ථා</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- University Section -->
+        <section class="section" id="university">
+            <h2 class="section-title">විශ්වවිද්‍යාලයට</h2>
+            <div class="links-grid">
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/46024/" target="_blank">විශ්වවිද්‍යාල පාඨමාලා පිළිබඳ වැඩි විස්තර</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/46058/" target="_blank">විවිධ විශ්වවිද්‍යාල වල ක්‍රියාත්මක උපාධි පාඨමාලා</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36601/" target="_blank">විශ්වවිද්‍යාල හා උසස් අධ්‍යාපන ආයතන</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://nvq.gov.lk/TVET_GUIDE/" target="_blank">තෘතීය හා වෘත්තීය අධ්‍යාපන අවස්ථා විස්තර</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41801/" target="_blank">උපාධි පාඨමාලා සඳහා අවම සුදුසුකම්</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parents Section -->
+        <section class="section" id="parents">
+            <h2 class="section-title">දෙමාපියන්ට</h2>
+            <div class="links-grid">
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/45332/" target="_blank">ඔබේ දරුවාගේ අධ්‍යාපන තත්ත්ව වාර්තාව</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/41495/" target="_blank">සිත්සරණී උපදේශන සේවාව</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teachers Section -->
+        <section class="section" id="teachers">
+            <h2 class="section-title">ගුරුවරුන්ට</h2>
+            <div class="links-grid">
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36586/" target="_blank">රාජකාරිය රාජකාරී ලේඛන</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41806/" target="_blank">ගුරු අත්පොත්, සිලබස් හා පාසල් පෙළ පොත්</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Researchers Section -->
+        <section class="section" id="researchers">
+            <h2 class="section-title">ගවේෂකයින්ට</h2>
+            <div class="links-grid">
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/45543/" target="_blank">දැනුම එකතුව Edupoints</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://amilaeduhelp.github.io/eduhub/" target="_blank">Research hub</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41291/" target="_blank">විශ්වකෝෂය</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/41315/" target="_blank">හරියට සිංහල</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36643/" target="_blank">වීඩියෝ පාඩම් මාලා</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/37545/" target="_blank">පින්තූර බැංකුව</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41488/" target="_blank">Book store</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/43473" target="_blank">පැරණි පොත් එකතුව</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36818/" target="_blank">සිතියම් පොත</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/library/" target="_blank">පුස්තකාලය</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.youtube.com/channel/UCOLm3w-9wbwbzvbYfnx2ZQA" target="_blank">youtube නාළිකාව- edu help-ඉගෙනුමට ඉගැන්වීමට අත.</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.whatsapp.com/channel/0029Va78UVm6BIEZBPCQSJ0J" target="_blank">අපේ Whatsapp නාළිකාව</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/universal-index/" target="_blank">විශ්වසුචිය</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36660/" target="_blank">අන්තර්ජාල ශබ්දකෝෂ හා විශ්වකෝෂ</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36687/" target="_blank">අන්තර්ජාල පුස්තකාල</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41795/" target="_blank">දත්ත පොකුරු</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- General Section -->
+        <section class="section" id="general">
+            <h2 class="section-title">පොදුවේ සැමට</h2>
+            <div class="links-grid">
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/42714/" target="_blank">යාවත්කාලීන වීම පුවත්</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41476/" target="_blank">Job mart</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section class="section" id="about-us">
+            <h2 class="section-title">අපේ කතා</h2>
+            <div class="links-grid">
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/40439/" target="_blank">දැන්වීම් සේවාව</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/43123/" target="_blank">Edu graphic සේවාව</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.facebook.com/profile.php?id=100082251310424" target="_blank">අපේ මුහුණු පොත</a>
+                </div>
+                <div class="link-item">
+                    <a href="https://www.eduhelp.lk/index.php/uncategorized/eduprivate/41818/" target="_blank">අපි</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Footer Ad Banner -->
+    <div class="slider footer-slider hidden-until-province">
+        <div class="slides" id="footerSlides">
+            <!-- Provincial ads will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="hidden-until-province">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EduHelp</h3>
+                    <p>අධ්‍යාපනික සහාය සඳහා වන සර්වග්‍රාහී වෙබ් අඩවිය</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100082251310424" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.youtube.com/channel/UCOLm3w-9wbwbzvbYfnx2ZQA" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.whatsapp.com/channel/0029Va78UVm6BIEZBPCQSJ0J" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>ශීර්ෂ කාණ්ඩ</h3>
+                    <ul>
+                        <li><a href="#advanced-level">උසස් පෙළට</a></li>
+                        <li><a href="#university">විශ්වවිද්‍යාලයට</a></li>
+                        <li><a href="#parents">දෙමාපියන්ට</a></li>
+                        <li><a href="#teachers">ගුරුවරුන්ට</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>අපගේ සේවාවන්</h3>
+                    <ul>
+                        <li><a href="https://www.eduhelp.lk/index.php/uncategorized/40439/" target="_blank">දැන්වීම් සේවාව</a></li>
+                        <li><a href="https://www.eduhelp.lk/index.php/uncategorized/43123/" target="_blank">Edu graphic සේවාව</a></li>
+                        <li><a href="https://www.eduhelp.lk/index.php/pusthakalaya/45332/" target="_blank">අධ්‍යාපන තත්ත්ව වාර්තා</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>සම්බන්ධ වන්න</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@eduhelp.lk</li>
+                        <li><i class="fas fa-phone"></i> +94 71 234 5678</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 EduHelp | අධ්‍යාපනික සහාය. සියලුම හිමිකම් ඇවිරිණි.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Province Selection
+        const provincePopup = document.getElementById('provincePopup');
+        const provinceBtns = document.querySelectorAll('.province-btn');
+        const hiddenElements = document.querySelectorAll('.hidden-until-province');
+        const headerSlides = document.getElementById('headerSlides');
+        const footerSlides = document.getElementById('footerSlides');
+        
+        // Province data object with banner images
+        const provinceData = {
+            'western': ['1a.jpg', '1b.jpg', '1c.jpg', '1d.jpg'],
+            'southern': ['2a.jpg', '2b.jpg', '2c.jpg', '2d.jpg'],
+            'eastern': ['3a.jpg', '3b.jpg', '3c.jpg', '3d.jpg'],
+            'uva': ['4a.jpg', '4b.jpg', '4c.jpg', '4d.jpg'],
+            'northcentral': ['5a.jpg', '5b.jpg', '5c.jpg', '5d.jpg'],
+            'northern': ['6a.jpg', '6b.jpg', '6c.jpg', '6d.jpg'],
+            'sabaragamuwa': ['7a.jpg', '7b.jpg', '7c.jpg', '7d.jpg'],
+            'northwestern': ['8a.jpg', '8b.jpg', '8c.jpg', '8d.jpg'],
+            'central': ['9a.jpg', '9b.jpg', '9c.jpg', '9d.jpg']
+        };
+        
+        // Load province specific ads
+        function loadProvinceAds(province) {
+            const banners = provinceData[province];
+            
+            // Clear previous slides
+            headerSlides.innerHTML = '';
+            footerSlides.innerHTML = '';
+            
+            // Add header banners (a and b)
+            for (let i = 0; i < 2; i++) {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                const img = document.createElement('img');
+                img.src = `images/${banners[i]}`;
+                img.alt = `${province} banner`;
+                slide.appendChild(img);
+                headerSlides.appendChild(slide);
+            }
+            
+            // Add footer banners (c and d)
+            for (let i = 2; i < 4; i++) {
+                const slide = document.createElement('div');
+                slide.className = 'slide';
+                const img = document.createElement('img');
+                img.src = `images/${banners[i]}`;
+                img.alt = `${province} banner`;
+                slide.appendChild(img);
+                footerSlides.appendChild(slide);
+            }
+            
+            // Start the slider
+            startSlider();
+        }
+        
+        // Province selection
+        provinceBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const province = this.getAttribute('data-province');
+                localStorage.setItem('selectedProvince', province);
+                
+                // Hide the popup
+                provincePopup.style.display = 'none';
+                
+                // Show hidden elements
+                hiddenElements.forEach(el => {
+                    el.classList.remove('hidden-until-province');
+                });
+                
+                // Load province specific ads
+                loadProvinceAds(province);
+            });
+        });
+        
+        // Check if user already selected a province
+        window.addEventListener('DOMContentLoaded', function() {
+            const selectedProvince = localStorage.getItem('selectedProvince');
+            if (selectedProvince) {
+                // Hide the popup
+                provincePopup.style.display = 'none';
+                
+                // Show hidden elements
+                hiddenElements.forEach(el => {
+                    el.classList.remove('hidden-until-province');
+                });
+                
+                // Load province specific ads
+                loadProvinceAds(selectedProvince);
+            }
+        });
+        
+        // Slider functionality
+        function startSlider() {
+            const slidersArray = document.querySelectorAll('.slider');
+            
+            slidersArray.forEach(slider => {
+                const slides = slider.querySelector('.slides');
+                const slideElements = slides.querySelectorAll('.slide');
+                
+                if (slideElements.length > 1) {
+                    let currentSlide = 0;
+                    const slideWidth = 100; // percentage
+                    
+                    // Set initial position
+                    slides.style.transform = `translateX(0%)`;
+                    
+                    setInterval(() => {
+                        currentSlide = (currentSlide + 1) % slideElements.length;
+                        slides.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+                    }, 5000);
+                }
+            });
+        }
+        
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+        
+        navToggle.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    mainNav.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>

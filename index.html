@@ -9,478 +9,482 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #81C31C;
-            --primary-dark: #669a16;
-            --primary-light: #a1e148;
-            --text-dark: #333;
-            --text-light: #f8f8f8;
-            --background-light: #f9f9f9;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            
-            /* Category Colors */
-            --new-features-color: #6e9e04;
-            --advanced-color: #4ECDC4;
-            --university-color: #A875FF;
-            --parents-color: #FFB347;
-            --teachers-color: #3498DB;
-            --researchers-color: #FF6B81;
-            --general-color: #26C485;
-            --about-color: #45B8AC;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Noto Sans Sinhala', sans-serif;
-        }
-        
-        body {
-            background-color: var(--background-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
-        
-        /* Header */
-        header {
-            background-color: white;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-        }
-        
-        .logo img {
-            height: 60px;
-			padding-left: 25px;  /* වම් පැත්තෙන් ඉඩක් තබන්න */
-			padding-right: 25px; /* දකුණු පැත්තෙන් ඉඩක් තබන්න */
-			max-width: 100%;      /* සම්පූර්ණ පළල වෙනුවට සීමාවක් යොදන්න */
-			margin: 0 auto;      /* දෙපසින් සමාන margins සමඟ මැදට තබන්න */
-			box-sizing: border-box;
+	:root {
+    --primary-color: #81C31C;
+    --primary-dark: #669a16;
+    --primary-light: #a1e148;
+    --text-dark: #333;
+    --text-light: #f8f8f8;
+    --background-light: #f9f9f9;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    /* Category Colors */
+    --new-features-color: #6e9e04;
+    --advanced-color: #4ECDC4;
+    --university-color: #A875FF;
+    --parents-color: #FFB347;
+    --teachers-color: #3498DB;
+    --researchers-color: #FF6B81;
+    --general-color: #26C485;
+    --about-color: #45B8AC;
 }
-        }
-        
-        .nav-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary-color);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            position: relative;
-            margin-left: 20px;
-        }
-        
-        nav ul li a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 8px 12px;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-        
-        nav ul li a:hover {
-            background-color: var(--primary-light);
-            color: var(--text-dark);
-        }
-        
-		.slider {
-			width: 100%; 
-			max-width: 100%;
-			height: auto;
-			margin: 0;   
-			padding: 0;  
-			position: relative;
-			overflow: hidden;
-			border-radius: 0; 
-		box-shadow: var(--shadow);
-		}
 
-		.slider img {
-			width: 100%;
-			display: block; 
-			object-fit: cover;
-		}
-        
-        .slides {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-        
-        .slide {
-            flex: 0 0 100%;
-        }
-        
-        .slide img {
-            width: 100%;
-            height: auto;
-            max-height: 200px;
-            object-fit: cover;
-        }
-        
-        /* Main Content */
-        .main-content {
-            padding: 30px 0;
-        }
-        
-        .section {
-            margin-bottom: 40px;
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
-        }
-        
-        .section:hover {
-            transform: translateY(-5px);
-        }
-        
-        .section-title {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-        
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 15px;
-        }
-        
-        .link-item {
-            background-color: #f8f8f8;
-            border-left: 4px solid var(--primary-color);
-            padding: 12px 15px;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-        
-        .link-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            background-color: var(--primary-light);
-        }
-        
-        .link-item a {
-            color: var(--text-dark);
-            text-decoration: none;
-            display: block;
-            font-weight: 500;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 40px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
-        
-        .footer-section h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-        }
-        
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-section ul li a {
-            color: #ddd;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .footer-section ul li a:hover {
-            color: var(--primary-color);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .social-links a {
-            display: inline-block;
-            width: 36px;
-            height: 36px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #555;
-            font-size: 0.9rem;
-        }
-        
-        /* New Features */
-        .new-features {
-            background: linear-gradient(135deg, var(--new-features-color), #7fb704);
-            color: white;
-            text-align: center;
-            padding: 15px;
-            margin-bottom: 30px;
-            border-radius: 0px;
-            box-shadow: var(--shadow);
-        }
-        
-        #advanced-level .section-title {
-            color: var(--advanced-color);
-            border-bottom: 2px solid var(--advanced-color);
-        }
-        
-        #advanced-level .link-item {
-            border-left: 4px solid var(--advanced-color);
-        }
-        
-        #university .section-title {
-            color: var(--university-color);
-            border-bottom: 2px solid var(--university-color);
-        }
-        
-        #university .link-item {
-            border-left: 4px solid var(--university-color);
-        }
-        
-        #parents .section-title {
-            color: var(--parents-color);
-            border-bottom: 2px solid var(--parents-color);
-        }
-        
-        #parents .link-item {
-            border-left: 4px solid var(--parents-color);
-        }
-        
-        #teachers .section-title {
-            color: var(--teachers-color);
-            border-bottom: 2px solid var(--teachers-color);
-        }
-        
-        #teachers .link-item {
-            border-left: 4px solid var(--teachers-color);
-        }
-        
-        #researchers .section-title {
-            color: var(--researchers-color);
-            border-bottom: 2px solid var(--researchers-color);
-        }
-        
-        #researchers .link-item {
-            border-left: 4px solid var(--researchers-color);
-        }
-        
-        #general .section-title {
-            color: var(--general-color);
-            border-bottom: 2px solid var(--general-color);
-        }
-        
-        #general .link-item {
-            border-left: 4px solid var(--general-color);
-        }
-        
-        #about-us .section-title {
-            color: var(--about-color);
-            border-bottom: 2px solid var(--about-color);
-        }
-        
-        #about-us .link-item {
-            border-left: 4px solid var(--about-color);
-        }
-        
-        .new-features a {
-            color: white;
-            font-weight: bold;
-            text-decoration: none;
-            display: inline-block;
-            padding: 8px 15px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            transition: all 0.3s;
-        }
-        
-        .new-features a:hover {
-            background-color: rgba(255, 255, 255, 0.3);
-            transform: scale(1.05);
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: var(--primary-color);
-            color: white;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 99;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-        }
-        
-        /* Hover effects for link items based on their category */
-        #advanced-level .link-item:hover {
-            background-color: rgba(78, 205, 196, 0.2);
-        }
-        
-        #university .link-item:hover {
-            background-color: rgba(168, 117, 255, 0.2);
-        }
-        
-        #parents .link-item:hover {
-            background-color: rgba(255, 179, 71, 0.2);
-        }
-        
-        #teachers .link-item:hover {
-            background-color: rgba(52, 152, 219, 0.2);
-        }
-        
-        #researchers .link-item:hover {
-            background-color: rgba(255, 107, 129, 0.2);
-        }
-        
-        #general .link-item:hover {
-            background-color: rgba(38, 196, 133, 0.2);
-        }
-        
-        #about-us .link-item:hover {
-            background-color: rgba(69, 184, 172, 0.2);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-toggle {
-                display: block;
-            }
-            
-            nav {
-                position: absolute;
-                top: 90px;
-                left: 0;
-                right: 0;
-                background-color: white;
-                box-shadow: var(--shadow);
-                height: 0;
-                overflow: hidden;
-                transition: height 0.3s ease;
-                z-index: 100;
-            }
-            
-            nav.active {
-                height: auto;
-                padding-bottom: 15px;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                padding: 20px;
-            }
-            
-            nav ul li {
-                margin: 10px 0;
-                width: 100%;
-                text-align: center;
-            }
-            
-            nav ul li a {
-                display: block;
-                padding: 10px 0;
-            }
-            
-            .links-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            
-            .section {
-                padding: 20px 15px;
-            }
-            
-            .header-container {
-                padding: 10px 0;
-            }
-            
-            .logo img {
-                height: 50px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .section {
-                padding: 15px 10px;
-            }
-            
-            .section-title {
-                font-size: 1.3rem;
-            }
-            
-            .logo img {
-                height: 40px;
-            }
-        }
-    </style>
-</head>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans Sinhala', sans-serif;
+}
+
+body {
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header */
+header {
+    background-color: white;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo img {
+    height: 60px;
+    padding-left: 25px;
+    padding-right: 25px;
+    max-width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.nav-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    position: relative;
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: var(--primary-light);
+    color: var(--text-dark);
+}
+
+.slider {
+    width: 100%; 
+    max-width: 100%;
+    height: auto;
+    margin: 0;   
+    padding: 0;  
+    position: relative;
+    overflow: hidden;
+    border-radius: 0; 
+    box-shadow: var(--shadow);
+}
+
+/* Add space above the header banner */
+.header-slider {
+    margin-top: 10px;
+}
+
+.slider img {
+    width: 100%;
+    display: block; 
+    object-fit: cover;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slide {
+    flex: 0 0 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+/* Main Content */
+.main-content {
+    padding: 30px 0;
+}
+
+.section {
+    margin-bottom: 40px;
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+}
+
+.section-title {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.link-item {
+    background-color: #f8f8f8;
+    border-left: 4px solid var(--primary-color);
+    padding: 12px 15px;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.link-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+    background-color: var(--primary-light);
+}
+
+.link-item a {
+    color: var(--text-dark);
+    text-decoration: none;
+    display: block;
+    font-weight: 500;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #ddd;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--primary-dark);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #555;
+    font-size: 0.9rem;
+}
+
+/* New Features */
+.new-features {
+    background: linear-gradient(135deg, var(--new-features-color), #7fb704);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-bottom: 30px;
+    border-radius: 0px;
+    box-shadow: var(--shadow);
+}
+
+#advanced-level .section-title {
+    color: var(--advanced-color);
+    border-bottom: 2px solid var(--advanced-color);
+}
+
+#advanced-level .link-item {
+    border-left: 4px solid var(--advanced-color);
+}
+
+#university .section-title {
+    color: var(--university-color);
+    border-bottom: 2px solid var(--university-color);
+}
+
+#university .link-item {
+    border-left: 4px solid var(--university-color);
+}
+
+#parents .section-title {
+    color: var(--parents-color);
+    border-bottom: 2px solid var(--parents-color);
+}
+
+#parents .link-item {
+    border-left: 4px solid var(--parents-color);
+}
+
+#teachers .section-title {
+    color: var(--teachers-color);
+    border-bottom: 2px solid var(--teachers-color);
+}
+
+#teachers .link-item {
+    border-left: 4px solid var(--teachers-color);
+}
+
+#researchers .section-title {
+    color: var(--researchers-color);
+    border-bottom: 2px solid var(--researchers-color);
+}
+
+#researchers .link-item {
+    border-left: 4px solid var(--researchers-color);
+}
+
+#general .section-title {
+    color: var(--general-color);
+    border-bottom: 2px solid var(--general-color);
+}
+
+#general .link-item {
+    border-left: 4px solid var(--general-color);
+}
+
+#about-us .section-title {
+    color: var(--about-color);
+    border-bottom: 2px solid var(--about-color);
+}
+
+#about-us .link-item {
+    border-left: 4px solid var(--about-color);
+}
+
+.new-features a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.new-features a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 99;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+}
+
+/* Hover effects for link items based on their category */
+#advanced-level .link-item:hover {
+    background-color: rgba(78, 205, 196, 0.2);
+}
+
+#university .link-item:hover {
+    background-color: rgba(168, 117, 255, 0.2);
+}
+
+#parents .link-item:hover {
+    background-color: rgba(255, 179, 71, 0.2);
+}
+
+#teachers .link-item:hover {
+    background-color: rgba(52, 152, 219, 0.2);
+}
+
+#researchers .link-item:hover {
+    background-color: rgba(255, 107, 129, 0.2);
+}
+
+#general .link-item:hover {
+    background-color: rgba(38, 196, 133, 0.2);
+}
+
+#about-us .link-item:hover {
+    background-color: rgba(69, 184, 172, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+    
+    nav {
+        position: absolute;
+        top: 90px;
+        left: 0;
+        right: 0;
+        background-color: white;
+        box-shadow: var(--shadow);
+        height: 0;
+        overflow: hidden;
+        transition: height 0.3s ease;
+        z-index: 100;
+    }
+    
+    nav.active {
+        height: auto;
+        padding-bottom: 15px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 10px 0;
+    }
+    
+    .links-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    
+    .section {
+        padding: 20px 15px;
+    }
+    
+    .header-container {
+        padding: 10px 0;
+    }
+    
+    .logo img {
+        height: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 15px 10px;
+    }
+    
+    .section-title {
+        font-size: 1.3rem;
+    }
+    
+    .logo img {
+        height: 40px;
+    }
+}
+  </style>   
+	</head>
 <body>
     <!-- Header Banner Slideshow -->
     <div class="slider header-slider">
@@ -516,14 +520,14 @@
             </div>
             <nav id="mainNav">
                 <ul>
-                    <li><a href="#new-features">නව විශේෂාංග</a></li>
-                    <li><a href="#advanced-level">උසස් පෙළට</a></li>
-                    <li><a href="#university">විශ්වවිද්‍යාලයට</a></li>
-                    <li><a href="#parents">දෙමාපියන්ට</a></li>
-                    <li><a href="#teachers">ගුරුවරුන්ට</a></li>
-                    <li><a href="#researchers">ගවේෂකයින්ට</a></li>
-                    <li><a href="#general">සැමට</a></li>
-                    <li><a href="#about-us">අපේ කතා</a></li>
+                    <li><a href="#new-features" class="nav-link">නව විශේෂාංග</a></li>
+                    <li><a href="#advanced-level" class="nav-link">උසස් පෙළට</a></li>
+                    <li><a href="#university" class="nav-link">විශ්වවිද්‍යාලයට</a></li>
+                    <li><a href="#parents" class="nav-link">දෙමාපියන්ට</a></li>
+                    <li><a href="#teachers" class="nav-link">ගුරුවරුන්ට</a></li>
+                    <li><a href="#researchers" class="nav-link">ගවේෂකයින්ට</a></li>
+                    <li><a href="#general" class="nav-link">සැමට</a></li>
+                    <li><a href="#about-us" class="nav-link">අපේ කතා</a></li>
                 </ul>
             </nav>
         </div>
@@ -761,91 +765,112 @@
             </div>
         </div>
     </footer>
-
-    <!-- JavaScript -->
-    <script>
-        // Mobile Navigation Toggle
-       document.addEventListener('DOMContentLoaded', function() {
+    <script>	
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Navigation toggle functionality
     const navToggle = document.getElementById('navToggle');
     const mainNav = document.getElementById('mainNav');
+    const navLinks = document.querySelectorAll('.nav-link');
     
-    if (navToggle && mainNav) {
-        // Toggle menu when clicking the hamburger icon
-        navToggle.addEventListener('click', function(e) {
+    // Toggle menu when hamburger icon is clicked
+    navToggle.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+    });
+    
+    // Close menu when a nav link is clicked and scroll to section
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
             e.preventDefault();
-            e.stopPropagation();
-            mainNav.classList.toggle('active');
-        });
-        
-        // Get all navigation links
-        const navLinks = mainNav.querySelectorAll('a');
-        
-        // Add click event listener to each navigation link
-        navLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-                // Close the menu when a link is clicked
-                mainNav.classList.remove('active');
+            
+            // Close the mobile menu
+            mainNav.classList.remove('active');
+            
+            // Get the target section ID from href
+            const targetId = this.getAttribute('href');
+            
+            // Scroll to the target section smoothly
+            document.querySelector(targetId).scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
         });
+    });
+    
+    // Slideshow functionality for header and footer
+    function setupSlideshow(slidesId, interval = 5000) {
+        const slidesContainer = document.getElementById(slidesId);
+        if (!slidesContainer) return;
         
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!mainNav.contains(e.target) && e.target !== navToggle) {
-                mainNav.classList.remove('active');
-            }
-        });
+        const slides = slidesContainer.querySelectorAll('.slide');
+        const slideCount = slides.length;
+        let currentSlide = 0;
+        
+        function showSlide(index) {
+            slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slideCount;
+            showSlide(currentSlide);
+        }
+        
+        // Initialize slideshow
+        setInterval(nextSlide, interval);
     }
-});
-
-        // Back to Top Button
-        const backToTopButton = document.getElementById('backToTop');
+    
+    // Initialize both slideshows
+    setupSlideshow('headerSlides', 5000);
+    setupSlideshow('footerSlides', 6000);
+    
+    // Back to top button functionality
+    const backToTopBtn = document.getElementById('backToTop');
+    
+    // Show/hide back to top button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    });
+    
+    // Scroll to top when back to top button is clicked
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Add active class to navigation item based on scroll position
+    window.addEventListener('scroll', function() {
+        let scrollPosition = window.pageYOffset;
         
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
+        // Get all sections with IDs
+        const sections = document.querySelectorAll('section[id], div[id]');
+        
+        // Check which section is currently in view
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                // Remove active class from all nav links
+                navLinks.forEach(link => {
+                    link.classList.remove('active-link');
+                });
+                
+                // Add active class to current section's nav link
+                const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.add('active-link');
+                }
             }
         });
-        
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Header Slideshow
-        const headerSlides = document.getElementById('headerSlides');
-        let headerCurrentSlide = 0;
-        const headerTotalSlides = headerSlides.children.length;
-        
-        function showHeaderSlide(index) {
-            headerSlides.style.transform = `translateX(-${index * 100}%)`;
-        }
-        
-        function nextHeaderSlide() {
-            headerCurrentSlide = (headerCurrentSlide + 1) % headerTotalSlides;
-            showHeaderSlide(headerCurrentSlide);
-        }
-        
-        setInterval(nextHeaderSlide, 5000);
-
-        // Footer Slideshow
-        const footerSlides = document.getElementById('footerSlides');
-        let footerCurrentSlide = 0;
-        const footerTotalSlides = footerSlides.children.length;
-        
-        function showFooterSlide(index) {
-            footerSlides.style.transform = `translateX(-${index * 100}%)`;
-        }
-        
-        function nextFooterSlide() {
-            footerCurrentSlide = (footerCurrentSlide + 1) % footerTotalSlides;
-            showFooterSlide(footerCurrentSlide);
-        }
-        
-        setInterval(nextFooterSlide, 5000);
+    });
+});
     </script>
 </body>
 </html>

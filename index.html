@@ -730,18 +730,20 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>EduHelp</h3>
-                    <p>අධ්‍යාපනික සහාය සඳහා වන ලංවේ ප්‍රමුඛතම වෙබ් අඩවිය</p>
+                    <p>අධ්‍යාපනික සහාය සඳහා වන සර්වග්‍රාහී වෙබ් අඩවිය</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=100082251310424" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.youtube.com/@eduhelp-.3651" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/channel/UCOLm3w-9wbwbzvbYfnx2ZQA" target="_blank"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 <div class="footer-section">
                     <h3>සම්බන්ධ වන්න</h3>
                     <ul>
-                        <li><i class="fas fa-envelope"></i> contact@eduhelp.lk</li>
-                        <li><i class="fas fa-phone"></i> +94 71 640 0001</li>
-                        <li><i class="fas fa-map-marker-alt"></i> 703/5, Galle Road. Kalutara, Sri Lanka</li>
+                        <li><i class="fas fa-envelope"></i> info@eduhelp.lk</li>
+                        <li><i class="fas fa-phone"></i> +94 70 123 4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> කොළඹ, ශ්‍රී ලංකාව</li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -773,6 +775,9 @@
             e.preventDefault();
             e.stopPropagation();
             mainNav.classList.toggle('active');
+            
+            // Scroll to top of the menu to ensure it's fully visible
+            mainNav.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
         
         // Get all navigation links
@@ -780,20 +785,37 @@
         
         // Add click event listener to each navigation link
         navLinks.forEach(function(link) {
-            link.addEventListener('click', function() {
-                // Close the menu when a link is clicked
-                mainNav.classList.remove('active');
+            link.addEventListener('click', function(e) {
+                // Don't automatically close the menu when a link is clicked
+                // This way both the menu and content will be visible
+                
+                // Optional: Smooth scroll to the target section
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Calculate offset to account for fixed header
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        
+                        // Scroll to target section
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
             });
         });
         
-        // Close menu when clicking outside
+        // Close menu when clicking outside of menu and toggle button
         document.addEventListener('click', function(e) {
-            if (!mainNav.contains(e.target) && e.target !== navToggle) {
+            if (!mainNav.contains(e.target) && e.target !== navToggle && !navToggle.contains(e.target)) {
                 mainNav.classList.remove('active');
             }
         });
     }
-});
 
         // Back to Top Button
         const backToTopButton = document.getElementById('backToTop');

@@ -765,12 +765,25 @@
     <!-- JavaScript -->
     <script>
         // Mobile Navigation Toggle
-        const navToggle = document.getElementById('navToggle');
-        const mainNav = document.getElementById('mainNav');
-        
-        navToggle.addEventListener('click', () => {
+        document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    
+    if (navToggle && mainNav) {
+        navToggle.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default behavior
+            e.stopPropagation(); // Stop event propagation
             mainNav.classList.toggle('active');
         });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mainNav.contains(e.target) && e.target !== navToggle) {
+                mainNav.classList.remove('active');
+            }
+        });
+    }
+});
 
         // Back to Top Button
         const backToTopButton = document.getElementById('backToTop');

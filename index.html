@@ -100,15 +100,23 @@
             color: var(--text-dark);
         }
         
-        /* Slider Banner */
-        .slider {
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            margin-bottom: 30px;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-        }
+.slider {
+    width: 100%; 
+    max-width: 100%;
+    height: auto;
+    margin: 0;   
+    padding: 0;  
+    position: relative;
+    overflow: hidden;
+    border-radius: 0; 
+    box-shadow: var(--shadow);
+}
+
+.slider img {
+    width: 100%;
+    display: block; 
+    object-fit: cover;
+}
         
         .slides {
             display: flex;
@@ -246,65 +254,6 @@
             padding-top: 20px;
             border-top: 1px solid #555;
             font-size: 0.9rem;
-        }
-        
-        /* Province Popup */
-        .province-popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        
-        .popup-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        .popup-content h2 {
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        .provinces {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 20px 0;
-        }
-        
-        .province-btn {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-        
-        .province-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-        
-        /* Hide the main content until province is selected */
-        .hidden-until-province {
-            display: none;
         }
         
         /* New Features */
@@ -493,10 +442,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .provinces {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 25px;
@@ -520,16 +465,8 @@
                 padding: 15px 10px;
             }
             
-            .provinces {
-                grid-template-columns: 1fr;
-            }
-            
             .section-title {
                 font-size: 1.3rem;
-            }
-            
-            .popup-content {
-                padding: 20px 15px;
             }
             
             .logo img {
@@ -539,33 +476,29 @@
     </style>
 </head>
 <body>
-    <!-- Province Selection Popup -->
-    <div class="province-popup" id="provincePopup">
-        <div class="popup-content">
-            <h2>ඔබ පදිංචි පළාත තෝරන්න</h2>
-            <div class="provinces">
-                <button class="province-btn" data-province="western">බස්නාහිර පළාත</button>
-                <button class="province-btn" data-province="southern">දකුණු පළාත</button>
-                <button class="province-btn" data-province="eastern">නැගෙනහිර පළාත</button>
-                <button class="province-btn" data-province="uva">ඌව පළාත</button>
-                <button class="province-btn" data-province="northcentral">උතුරු මැද පළාත</button>
-                <button class="province-btn" data-province="northern">උතුරු පළාත</button>
-                <button class="province-btn" data-province="sabaragamuwa">සබරගමුව පළාත</button>
-                <button class="province-btn" data-province="northwestern">වයඹ පළාත</button>
-                <button class="province-btn" data-province="central">මධ්‍යම පළාත</button>
+    <!-- Header Banner Slideshow -->
+    <div class="slider header-slider">
+        <div class="slides" id="headerSlides">
+            <div class="slide">
+                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1a.jpg" alt="Header Banner 1">
+            </div>
+            <div class="slide">
+                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1b.jpg" alt="Header Banner 2">
+            </div>
+            <div class="slide">
+                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1c.jpg" alt="Header Banner 3">
+            </div>
+            <div class="slide">
+                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1d.jpg" alt="Header Banner 4">
+            </div>
+            <div class="slide">
+                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1e.jpg" alt="Header Banner 5">
             </div>
         </div>
     </div>
 
-    <!-- Header Ads -->
-    <div class="slider header-slider hidden-until-province">
-        <div class="slides" id="headerSlides">
-            <!-- Provincial ads will be loaded here -->
-        </div>
-    </div>
-
     <!-- Header -->
-    <header class="hidden-until-province">
+    <header>
         <div class="container header-container">
             <div class="logo">
                 <a href="#">
@@ -591,7 +524,7 @@
     </header>
 
     <!-- Main Content -->
-    <div class="container main-content hidden-until-province">
+    <div class="container main-content">
         <!-- New Features -->
         <div class="new-features" id="new-features">
             <h2>නව විශේෂාංග</h2>
@@ -764,15 +697,29 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Footer Ad Banner -->
-    <div class="slider footer-slider hidden-until-province">
+    <!-- Footer Banner Slideshow -->
+    <div class="slider footer-slider">
         <div class="slides" id="footerSlides">
-            <!-- Provincial ads will be loaded here -->
+            <div class="slide">
+                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1f.jpg" alt="Footer Banner 1">
+            </div>
+            <div class="slide">
+                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1g.jpg" alt="Footer Banner 2">
+            </div>
+            <div class="slide">
+                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1h.jpg" alt="Footer Banner 3">
+            </div>
+            <div class="slide">
+                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1i.jpg" alt="Footer Banner 4">
+            </div>
+            <div class="slide">
+                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1j.jpg" alt="Footer Banner 5">
+            </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="hidden-until-province">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -780,201 +727,94 @@
                     <p>අධ්‍යාපනික සහාය සඳහා වන සර්වග්‍රාහී වෙබ් අඩවිය</p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=100082251310424" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="https://www.youtube.com/channel/UCOLm3w-9wbwbzvbYfnx2ZQA" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="https://www.whatsapp.com/channel/0029Va78UVm6BIEZBPCQSJ0J" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
-                </div>
-                <div class="footer-section">
-                    <h3>ශීර්ෂ කාණ්ඩ</h3>
-                    <ul>
-                        <li><a href="#advanced-level">උසස් පෙළට</a></li>
-                        <li><a href="#university">විශ්වවිද්‍යාලයට</a></li>
-                        <li><a href="#parents">දෙමාපියන්ට</a></li>
-                        <li><a href="#teachers">ගුරුවරුන්ට</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>අපගේ සේවාවන්</h3>
-                    <ul>
-                        <li><a href="https://www.eduhelp.lk/index.php/uncategorized/40439/" target="_blank">දැන්වීම් සේවාව</a></li>
-                        <li><a href="https://www.eduhelp.lk/index.php/uncategorized/43123/" target="_blank">Edu graphic සේවාව</a></li>
-                        <li><a href="https://www.eduhelp.lk/index.php/pusthakalaya/45332/" target="_blank">අධ්‍යාපන තත්ත්ව වාර්තා</a></li>
-                    </ul>
                 </div>
                 <div class="footer-section">
                     <h3>සම්බන්ධ වන්න</h3>
                     <ul>
                         <li><i class="fas fa-envelope"></i> info@eduhelp.lk</li>
-                        <li><i class="fas fa-phone"></i> +94 71 234 5678</li>
+                        <li><i class="fas fa-phone"></i> +94 70 123 4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> කොළඹ, ශ්‍රී ලංකාව</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>ප්‍රයෝජනවත් සබැඳි</h3>
+                    <ul>
+                        <li><a href="#advanced-level">උසස් පෙළට</a></li>
+                        <li><a href="#university">විශ්වවිද්‍යාලයට</a></li>
+                        <li><a href="#parents">දෙමාපියන්ට</a></li>
+                        <li><a href="#about-us">අපි ගැන</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 EduHelp | අධ්‍යාපනික සහාය. සියලුම හිමිකම් ඇවිරිණි.</p>
+                <p>&copy; 2025 EduHelp. සියලුම හිමිකම් ඇවිරිණි.</p>
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        // Province Selection
-        const provincePopup = document.getElementById('provincePopup');
-        const provinceBtns = document.querySelectorAll('.province-btn');
-        const hiddenElements = document.querySelectorAll('.hidden-until-province');
-        const headerSlides = document.getElementById('headerSlides');
-        const footerSlides = document.getElementById('footerSlides');
-        
-        // Province data object with banner images
-        const provinceData = {
-            'western': ['1a.jpg', '1b.jpg', '1c.jpg', '1d.jpg'],
-            'southern': ['2a.jpg', '2b.jpg', '2c.jpg', '2d.jpg'],
-            'eastern': ['3a.jpg', '3b.jpg', '3c.jpg', '3d.jpg'],
-            'uva': ['4a.jpg', '4b.jpg', '4c.jpg', '4d.jpg'],
-            'northcentral': ['5a.jpg', '5b.jpg', '5c.jpg', '5d.jpg'],
-            'northern': ['6a.jpg', '6b.jpg', '6c.jpg', '6d.jpg'],
-            'sabaragamuwa': ['7a.jpg', '7b.jpg', '7c.jpg', '7d.jpg'],
-            'northwestern': ['8a.jpg', '8b.jpg', '8c.jpg', '8d.jpg'],
-            'central': ['9a.jpg', '9b.jpg', '9c.jpg', '9d.jpg']
-        };
-        
-        // Load province specific ads
-        function loadProvinceAds(province) {
-            const banners = provinceData[province];
-            
-            // Clear previous slides
-            headerSlides.innerHTML = '';
-            footerSlides.innerHTML = '';
-            
-            // Add header banners (a and b)
-            for (let i = 0; i < 2; i++) {
-                const slide = document.createElement('div');
-                slide.className = 'slide';
-                const img = document.createElement('img');
-                img.src = `images/${banners[i]}`;
-                img.alt = `${province} banner`;
-                slide.appendChild(img);
-                headerSlides.appendChild(slide);
-            }
-            
-            // Add footer banners (c and d)
-            for (let i = 2; i < 4; i++) {
-                const slide = document.createElement('div');
-                slide.className = 'slide';
-                const img = document.createElement('img');
-                img.src = `images/${banners[i]}`;
-                img.alt = `${province} banner`;
-                slide.appendChild(img);
-                footerSlides.appendChild(slide);
-            }
-            
-            // Start the slider
-            startSlider();
-        }
-        
-        // Province selection
-        provinceBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const province = this.getAttribute('data-province');
-                localStorage.setItem('selectedProvince', province);
-                
-                // Hide the popup
-                provincePopup.style.display = 'none';
-                
-                // Show hidden elements
-                hiddenElements.forEach(el => {
-                    el.classList.remove('hidden-until-province');
-                });
-                
-                // Load province specific ads
-                loadProvinceAds(province);
-            });
-        });
-        
-        // Check if user already selected a province
-        window.addEventListener('DOMContentLoaded', function() {
-            const selectedProvince = localStorage.getItem('selectedProvince');
-            if (selectedProvince) {
-                // Hide the popup
-                provincePopup.style.display = 'none';
-                
-                // Show hidden elements
-                hiddenElements.forEach(el => {
-                    el.classList.remove('hidden-until-province');
-                });
-                
-                // Load province specific ads
-                loadProvinceAds(selectedProvince);
-            }
-        });
-        
-        // Slider functionality
-        function startSlider() {
-            const slidersArray = document.querySelectorAll('.slider');
-            
-            slidersArray.forEach(slider => {
-                const slides = slider.querySelector('.slides');
-                const slideElements = slides.querySelectorAll('.slide');
-                
-                if (slideElements.length > 1) {
-                    let currentSlide = 0;
-                    const slideWidth = 100; // percentage
-                    
-                    // Set initial position
-                    slides.style.transform = `translateX(0%)`;
-                    
-                    setInterval(() => {
-                        currentSlide = (currentSlide + 1) % slideElements.length;
-                        slides.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
-                    }, 5000);
-                }
-            });
-        }
-        
         // Mobile Navigation Toggle
         const navToggle = document.getElementById('navToggle');
         const mainNav = document.getElementById('mainNav');
         
-        navToggle.addEventListener('click', function() {
+        navToggle.addEventListener('click', () => {
             mainNav.classList.toggle('active');
         });
-        
+
         // Back to Top Button
-        const backToTopBtn = document.getElementById('backToTop');
+        const backToTopButton = document.getElementById('backToTop');
         
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('visible');
+                backToTopButton.classList.add('visible');
             } else {
-                backToTopBtn.classList.remove('visible');
+                backToTopButton.classList.remove('visible');
             }
         });
         
-        backToTopBtn.addEventListener('click', function() {
+        backToTopButton.addEventListener('click', () => {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
+
+        // Header Slideshow
+        const headerSlides = document.getElementById('headerSlides');
+        let headerCurrentSlide = 0;
+        const headerTotalSlides = headerSlides.children.length;
         
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    mainNav.classList.remove('active');
-                }
-            });
-        });
+        function showHeaderSlide(index) {
+            headerSlides.style.transform = `translateX(-${index * 100}%)`;
+        }
+        
+        function nextHeaderSlide() {
+            headerCurrentSlide = (headerCurrentSlide + 1) % headerTotalSlides;
+            showHeaderSlide(headerCurrentSlide);
+        }
+        
+        setInterval(nextHeaderSlide, 5000);
+
+        // Footer Slideshow
+        const footerSlides = document.getElementById('footerSlides');
+        let footerCurrentSlide = 0;
+        const footerTotalSlides = footerSlides.children.length;
+        
+        function showFooterSlide(index) {
+            footerSlides.style.transform = `translateX(-${index * 100}%)`;
+        }
+        
+        function nextFooterSlide() {
+            footerCurrentSlide = (footerCurrentSlide + 1) % footerTotalSlides;
+            showFooterSlide(footerCurrentSlide);
+        }
+        
+        setInterval(nextFooterSlide, 5000);
     </script>
 </body>
 </html>

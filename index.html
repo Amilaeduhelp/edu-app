@@ -147,28 +147,52 @@ nav ul li a:hover {
 /* Main Content */
 .main-content {
     padding: 30px 0;
+    padding-bottom: 250px; /* Add padding to accommodate fixed footer */
 }
 
+/* Accordion Styles for Sections */
 .section {
-    margin-bottom: 40px;
+    margin-bottom: 15px;
     background: white;
     border-radius: 10px;
-    padding: 25px;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease;
-}
-
-.section:hover {
-    transform: translateY(-5px);
+    overflow: hidden;
 }
 
 .section-title {
     color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-    margin-bottom: 20px;
+    padding: 15px 20px;
+    margin-bottom: 0;
     font-size: 1.5rem;
     font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid transparent;
+}
+
+.section-title::after {
+    content: '\f078';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    transition: transform 0.3s ease;
+}
+
+.section.active .section-title::after {
+    transform: rotate(180deg);
+}
+
+.section-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.section.active .section-content {
+    max-height: 1000px; /* Large enough to accommodate content */
+    padding: 20px;
 }
 
 .links-grid {
@@ -196,6 +220,19 @@ nav ul li a:hover {
     text-decoration: none;
     display: block;
     font-weight: 500;
+}
+
+/* Fixed Footer Styles */
+.footer-slider-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 90;
+}
+
+.footer-slider {
+    margin-bottom: 0;
 }
 
 /* Footer */
@@ -273,12 +310,17 @@ footer {
     text-align: center;
     padding: 15px;
     margin-bottom: 30px;
-    border-radius: 0px;
+    border-radius: 10px;
     box-shadow: var(--shadow);
+    cursor: pointer;
 }
 
+/* Category-specific colors */
 #advanced-level .section-title {
     color: var(--advanced-color);
+}
+
+#advanced-level .section-title.active {
     border-bottom: 2px solid var(--advanced-color);
 }
 
@@ -288,6 +330,9 @@ footer {
 
 #university .section-title {
     color: var(--university-color);
+}
+
+#university .section-title.active {
     border-bottom: 2px solid var(--university-color);
 }
 
@@ -297,6 +342,9 @@ footer {
 
 #parents .section-title {
     color: var(--parents-color);
+}
+
+#parents .section-title.active {
     border-bottom: 2px solid var(--parents-color);
 }
 
@@ -306,6 +354,9 @@ footer {
 
 #teachers .section-title {
     color: var(--teachers-color);
+}
+
+#teachers .section-title.active {
     border-bottom: 2px solid var(--teachers-color);
 }
 
@@ -315,6 +366,9 @@ footer {
 
 #researchers .section-title {
     color: var(--researchers-color);
+}
+
+#researchers .section-title.active {
     border-bottom: 2px solid var(--researchers-color);
 }
 
@@ -324,6 +378,9 @@ footer {
 
 #general .section-title {
     color: var(--general-color);
+}
+
+#general .section-title.active {
     border-bottom: 2px solid var(--general-color);
 }
 
@@ -333,6 +390,9 @@ footer {
 
 #about-us .section-title {
     color: var(--about-color);
+}
+
+#about-us .section-title.active {
     border-bottom: 2px solid var(--about-color);
 }
 
@@ -358,7 +418,7 @@ footer {
 
 .back-to-top {
     position: fixed;
-    bottom: 20px;
+    bottom: 220px; /* Adjusted to be above fixed footer */
     right: 20px;
     background-color: var(--primary-color);
     color: white;
@@ -458,7 +518,11 @@ footer {
     }
     
     .section {
-        padding: 20px 15px;
+        padding: 0;
+    }
+    
+    .section.active .section-content {
+        padding: 15px;
     }
     
     .header-container {
@@ -468,23 +532,32 @@ footer {
     .logo img {
         height: 50px;
     }
+    
+    .main-content {
+        padding-bottom: 200px; /* Smaller footer padding for mobile */
+    }
+    
+    .back-to-top {
+        bottom: 170px; /* Adjusted for mobile */
+    }
 }
 
 @media (max-width: 480px) {
-    .section {
-        padding: 15px 10px;
-    }
-    
     .section-title {
         font-size: 1.3rem;
+        padding: 12px 15px;
     }
     
     .logo img {
         height: 40px;
     }
+    
+    .main-content {
+        padding-bottom: 180px; /* Even smaller footer padding for small devices */
+    }
 }
   </style>   
-	</head>
+</head>
 <body>
     <!-- Header Banner Slideshow -->
     <div class="slider header-slider">
@@ -547,21 +620,23 @@ footer {
         <!-- Advanced Level Section -->
         <section class="section" id="advanced-level">
             <h2 class="section-title">උසස් පෙළට</h2>
-            <div class="links-grid">
-                <div class="link-item">
-                    <a href="https://amilaeduhelp.github.io/Career-key/" target="_blank">ඔබව මැනගන්න වෘත්තීය යතුර පරීක්ෂණය</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/44488/" target="_blank">උසස් පෙළ විෂයයන් තෝරාගැනීමට අත්වැලක්</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/33038/" target="_blank">13+පාසල් නාමාවලිය</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/40872/" target="_blank">Z-Score</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36615/" target="_blank">උසස් පෙළ විෂයයන් හා රැකියා අවස්ථා</a>
+            <div class="section-content">
+                <div class="links-grid">
+                    <div class="link-item">
+                        <a href="https://amilaeduhelp.github.io/Career-key/" target="_blank">ඔබව මැනගන්න වෘත්තීය යතුර පරීක්ෂණය</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/pusthakalaya/44488/" target="_blank">උසස් පෙළ විෂයයන් තෝරාගැනීමට අත්වැලක්</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/pusthakalaya/33038/" target="_blank">13+පාසල් නාමාවලිය</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/40872/" target="_blank">Z-Score</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/36615/" target="_blank">උසස් පෙළ විෂයයන් හා රැකියා අවස්ථා</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -569,21 +644,23 @@ footer {
         <!-- University Section -->
         <section class="section" id="university">
             <h2 class="section-title">විශ්වවිද්‍යාලයට</h2>
-            <div class="links-grid">
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/46024/" target="_blank">විශ්වවිද්‍යාල පාඨමාලා පිළිබඳ වැඩි විස්තර</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/46058/" target="_blank">විවිධ විශ්වවිද්‍යාල වල ක්‍රියාත්මක උපාධි පාඨමාලා</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36601/" target="_blank">විශ්වවිද්‍යාල හා උසස් අධ්‍යාපන ආයතන</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://nvq.gov.lk/TVET_GUIDE/" target="_blank">තෘතීය හා වෘත්තීය අධ්‍යාපන අවස්ථා විස්තර</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41801/" target="_blank">උපාධි පාඨමාලා සඳහා අවම සුදුසුකම්</a>
+            <div class="section-content">
+                <div class="links-grid">
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/pusthakalaya/46024/" target="_blank">විශ්වවිද්‍යාල පාඨමාලා පිළිබඳ වැඩි විස්තර</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/pusthakalaya/46058/" target="_blank">විවිධ විශ්වවිද්‍යාල වල ක්‍රියාත්මක උපාධි පාඨමාලා</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/36601/" target="_blank">විශ්වවිද්‍යාල හා උසස් අධ්‍යාපන ආයතන</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://nvq.gov.lk/TVET_GUIDE/" target="_blank">තෘතීය හා වෘත්තීය අධ්‍යාපන අවස්ථා විස්තර</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41801/" target="_blank">උපාධි පාඨමාලා සඳහා අවම සුදුසුකම්</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -591,12 +668,14 @@ footer {
         <!-- Parents Section -->
         <section class="section" id="parents">
             <h2 class="section-title">දෙමාපියන්ට</h2>
-            <div class="links-grid">
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/45332/" target="_blank">ඔබේ දරුවාගේ අධ්‍යාපන තත්ත්ව වාර්තාව</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/41495/" target="_blank">සිත්සරණී උපදේශන සේවාව</a>
+            <div class="section-content">
+                <div class="links-grid">
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/pusthakalaya/45332/" target="_blank">ඔබේ දරුවාගේ අධ්‍යාපන තත්ත්ව වාර්තාව</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/41495/" target="_blank">සිත්සරණී උපදේශන සේවාව</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -604,12 +683,14 @@ footer {
         <!-- Teachers Section -->
         <section class="section" id="teachers">
             <h2 class="section-title">ගුරුවරුන්ට</h2>
-            <div class="links-grid">
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36586/" target="_blank">රාජකාරී ලේඛන</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41806/" target="_blank">ගුරු අත්පොත්, සිලබස් හා පාසල් පෙළ පොත්</a>
+            <div class="section-content">
+                <div class="links-grid">
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/36586/" target="_blank">රාජකාරී ලේඛන</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41806/" target="_blank">ගුරු අත්පොත්, සිලබස් හා පාසල් පෙළ පොත්</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -617,54 +698,56 @@ footer {
         <!-- Researchers Section -->
         <section class="section" id="researchers">
             <h2 class="section-title">ගවේෂකයින්ට</h2>
-            <div class="links-grid">
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/45543/" target="_blank">Edupoints</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://amilaeduhelp.github.io/eduhub/" target="_blank">Research hub</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41291/" target="_blank">විශ්වකෝෂය</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/41315/" target="_blank">හරියට සිංහල</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36643/" target="_blank">වීඩියෝ පාඩම් මාලා</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/37545/" target="_blank">පින්තූර බැංකුව</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41488/" target="_blank">Book store</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/pusthakalaya/43473" target="_blank">පැරණි පොත් එකතුව</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36818/" target="_blank">සිතියම් පොත</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/library/" target="_blank">පුස්තකාලය</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.youtube.com/channel/UCOLm3w-9wbwbzvbYfnx2ZQA" target="_blank">youtube නාළිකාව- edu help-ඉගෙනුමට ඉගැන්වීමට අත.</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.whatsapp.com/channel/0029Va78UVm6BIEZBPCQSJ0J" target="_blank">අපේ Whatsapp නාළිකාව</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/universal-index/" target="_blank">විශ්වසුචිය</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36660/" target="_blank">අන්තර්ජාල ශබ්දකෝෂ හා විශ්වකෝෂ</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/36687/" target="_blank">අන්තර්ජාල පුස්තකාල</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41795/" target="_blank">දත්ත පොකුරු</a>
+            <div class="section-content">
+                <div class="links-grid">
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/pusthakalaya/45543/" target="_blank">Edupoints</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://amilaeduhelp.github.io/eduhub/" target="_blank">Research hub</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41291/" target="_blank">විශ්වකෝෂය</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/41315/" target="_blank">හරියට සිංහල</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/36643/" target="_blank">වීඩියෝ පාඩම් මාලා</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/37545/" target="_blank">පින්තූර බැංකුව</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41488/" target="_blank">Book store</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/pusthakalaya/43473" target="_blank">පැරණි පොත් එකතුව</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/36818/" target="_blank">සිතියම් පොත</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/library/" target="_blank">පුස්තකාලය</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.youtube.com/channel/UCOLm3w-9wbwbzvbYfnx2ZQA" target="_blank">youtube නාළිකාව- edu help-ඉගෙනුමට ඉගැන්වීමට අත.</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.whatsapp.com/channel/0029Va78UVm6BIEZBPCQSJ0J" target="_blank">අපේ Whatsapp නාළිකාව</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/universal-index/" target="_blank">විශ්වසුචිය</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/36660/" target="_blank">අන්තර්ජාල ශබ්දකෝෂ හා විශ්වකෝෂ</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/36687/" target="_blank">අන්තර්ජාල පුස්තකාල</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41795/" target="_blank">දත්ත පොකුරු</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -672,12 +755,14 @@ footer {
         <!-- General Section -->
         <section class="section" id="general">
             <h2 class="section-title">පොදුවේ සැමට</h2>
-            <div class="links-grid">
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/42714/" target="_blank">ආධ්‍යාපනික ප්‍රවෘත්ති</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41476/" target="_blank">Job mart</a>
+            <div class="section-content">
+                <div class="links-grid">
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/42714/" target="_blank">ආධ්‍යාපනික ප්‍රවෘත්ති</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/edu/41476/" target="_blank">Job mart</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -685,18 +770,20 @@ footer {
         <!-- About Us Section -->
         <section class="section" id="about-us">
             <h2 class="section-title">අපේ කතා</h2>
-            <div class="links-grid">
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/40439/" target="_blank">දැන්වීම් සේවාව</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/43123/" target="_blank">Edu graphic සේවාව</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.facebook.com/profile.php?id=100082251310424" target="_blank">අපේ මුහුණු පොත</a>
-                </div>
-                <div class="link-item">
-                    <a href="https://www.eduhelp.lk/index.php/uncategorized/eduprivate/41818/" target="_blank">අපි</a>
+            <div class="section-content">
+                <div class="links-grid">
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/40439/" target="_blank">දැන්වීම් සේවාව</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/43123/" target="_blank">Edu graphic සේවාව</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.facebook.com/profile.php?id=100082251310424" target="_blank">අපේ මුහුණු පොත</a>
+                    </div>
+                    <div class="link-item">
+                        <a href="https://www.eduhelp.lk/index.php/uncategorized/eduprivate/41818/" target="_blank">අපි</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -707,23 +794,25 @@ footer {
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Footer Banner Slideshow -->
-    <div class="slider footer-slider">
-        <div class="slides" id="footerSlides">
-            <div class="slide">
-                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1f.jpg" alt="Footer Banner 1">
-            </div>
-            <div class="slide">
-                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1g.jpg" alt="Footer Banner 2">
-            </div>
-            <div class="slide">
-                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1h.jpg" alt="Footer Banner 3">
-            </div>
-            <div class="slide">
-                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1i.jpg" alt="Footer Banner 4">
-            </div>
-            <div class="slide">
-                <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1j.jpg" alt="Footer Banner 5">
+    <!-- Footer Banner Slideshow - Fixed at bottom -->
+    <div class="footer-slider-container">
+        <div class="slider footer-slider">
+            <div class="slides" id="footerSlides">
+                <div class="slide">
+                    <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1f.jpg" alt="Footer Banner 1">
+                </div>
+                <div class="slide">
+                    <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1g.jpg" alt="Footer Banner 2">
+                </div>
+                <div class="slide">
+                    <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1h.jpg" alt="Footer Banner 3">
+                </div>
+                <div class="slide">
+                    <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1i.jpg" alt="Footer Banner 4">
+                </div>
+                <div class="slide">
+                    <img src="https://www.eduhelp.lk/wp-content/uploads/2025/05/1j.jpg" alt="Footer Banner 5">
+                </div>
             </div>
         </div>
     </div>
@@ -763,112 +852,125 @@ footer {
             </div>
         </div>
     </footer>
-    <script>	
-// Wait for DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Navigation toggle functionality
-    const navToggle = document.getElementById('navToggle');
-    const mainNav = document.getElementById('mainNav');
-    const navLinks = document.querySelectorAll('.nav-link');
-    
-    // Toggle menu when hamburger icon is clicked
-    navToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('active');
-    });
-    
-    // Close menu when a nav link is clicked and scroll to section
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
+
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navigation toggle functionality
+            const navToggle = document.getElementById('navToggle');
+            const mainNav = document.getElementById('mainNav');
+            const navLinks = document.querySelectorAll('.nav-link');
             
-            // Close the mobile menu
-            mainNav.classList.remove('active');
+            // Toggle menu when hamburger icon is clicked
+            navToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
             
-            // Get the target section ID from href
-            const targetId = this.getAttribute('href');
+            // Close menu when a nav link is clicked and scroll to section
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Close the mobile menu
+                    mainNav.classList.remove('active');
+                    
+                    // Get the target section ID from href
+                    const targetId = this.getAttribute('href');
+                    
+                    // Find the target section
+                    const targetSection = document.querySelector(targetId);
+                    
+                    // Scroll to the target section smoothly
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Toggle active class on the clicked section
+                    if (!targetSection.classList.contains('active')) {
+                        // Close all other sections
+                        document.querySelectorAll('.section').forEach(section => {
+                            section.classList.remove('active');
+                        });
+                        
+                        // Open the clicked section
+                        targetSection.classList.add('active');
+                    }
+                });
+            });
             
-            // Scroll to the target section smoothly
-            document.querySelector(targetId).scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
+            // Section accordion functionality
+            const sectionTitles = document.querySelectorAll('.section-title');
+            
+            sectionTitles.forEach(title => {
+                title.addEventListener('click', function() {
+                    const section = this.parentElement;
+                    
+                    // Toggle active class on the current section
+                    section.classList.toggle('active');
+                    
+                    // Close other sections when opening a new one
+                    if (section.classList.contains('active')) {
+                        document.querySelectorAll('.section').forEach(otherSection => {
+                            if (otherSection !== section) {
+                                otherSection.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            });
+            
+            // Slideshow functionality for header and footer
+            function setupSlideshow(slidesId, interval = 5000) {
+                const slidesContainer = document.getElementById(slidesId);
+                if (!slidesContainer) return;
+                
+                const slides = slidesContainer.querySelectorAll('.slide');
+                const slideCount = slides.length;
+                let currentSlide = 0;
+                
+                function showSlide(index) {
+                    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+                }
+                
+                function nextSlide() {
+                    currentSlide = (currentSlide + 1) % slideCount;
+                    showSlide(currentSlide);
+                }
+                
+                // Initialize slideshow
+                setInterval(nextSlide, interval);
+            }
+            
+            // Initialize both slideshows
+            setupSlideshow('headerSlides', 5000);
+            setupSlideshow('footerSlides', 6000);
+            
+            // Back to top button functionality
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            // Show/hide back to top button based on scroll position
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            // Scroll to top when back to top button is clicked
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // Initially all sections should be closed
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
             });
         });
-    });
-    
-    // Slideshow functionality for header and footer
-    function setupSlideshow(slidesId, interval = 5000) {
-        const slidesContainer = document.getElementById(slidesId);
-        if (!slidesContainer) return;
-        
-        const slides = slidesContainer.querySelectorAll('.slide');
-        const slideCount = slides.length;
-        let currentSlide = 0;
-        
-        function showSlide(index) {
-            slidesContainer.style.transform = `translateX(-${index * 100}%)`;
-        }
-        
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slideCount;
-            showSlide(currentSlide);
-        }
-        
-        // Initialize slideshow
-        setInterval(nextSlide, interval);
-    }
-    
-    // Initialize both slideshows
-    setupSlideshow('headerSlides', 5000);
-    setupSlideshow('footerSlides', 6000);
-    
-    // Back to top button functionality
-    const backToTopBtn = document.getElementById('backToTop');
-    
-    // Show/hide back to top button based on scroll position
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            backToTopBtn.classList.add('visible');
-        } else {
-            backToTopBtn.classList.remove('visible');
-        }
-    });
-    
-    // Scroll to top when back to top button is clicked
-    backToTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-    
-    // Add active class to navigation item based on scroll position
-    window.addEventListener('scroll', function() {
-        let scrollPosition = window.pageYOffset;
-        
-        // Get all sections with IDs
-        const sections = document.querySelectorAll('section[id], div[id]');
-        
-        // Check which section is currently in view
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                // Remove active class from all nav links
-                navLinks.forEach(link => {
-                    link.classList.remove('active-link');
-                });
-                
-                // Add active class to current section's nav link
-                const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
-                if (activeLink) {
-                    activeLink.classList.add('active-link');
-                }
-            }
-        });
-    });
-});
     </script>
 </body>
 </html>
